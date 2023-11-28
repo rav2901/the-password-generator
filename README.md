@@ -1,5 +1,5 @@
 # the-password-generator
-##challenge for week 5
+## challenge for week 5
 This is an application that generates random passwors based on criterias selected by he user. 
 The user prompted to choose the length of the password (8 to 128 characters) and to confirm what type of characters should be included in the password.
 In order for the application to work correctly, the user must choose at least one of the character option (lowercase, uppercase, numbers,special characters).
