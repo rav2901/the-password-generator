@@ -92,36 +92,68 @@ var upperCasedCharacters = [
 
 // declare a global variable and set it to zero to make sure the length of the password is a number:
 var chooseNumber = 0;
+// new array to store the user's character choices
+var includedCharacters = [];
 function getPasswordOptions() {
-  // Prompt the user to choose the length:
+  // Prompt the user to choose the length of the password:
   
   chooseNumber = prompt("How many characters would you like for your password? Please choose any number between 8 and 128.");
-  // If, else to make sure the user chooses a valid length:
-  
+  // If, else to make sure the user chooses a valid length and prompt them to choose character options:
   if(chooseNumber < 8 || chooseNumber > 128 || isNaN(chooseNumber)){
     alert( "Invalid, please enter any number between 8 and 128.");
   } else {
     alert("Your password will be " + chooseNumber + " characters long");
-  specialCharacters = confirm("Should your password contain special characters?");
-  numericCharacters = confirm("Should your password contain numbers?");
-  lowerCasedCharacters = confirm("Should your password contain lowercase?");
-  upperCasedCharacters = confirm("Should your password contain UPPERCASE?");
-  if(specialCharacters || numericCharacters || lowerCasedCharacters || upperCasedCharacters){
-    alert("Great! Let's generate the password");
-  }else{
-    alert("You must choose at least one of the options: special characters, numbers, lowercase, uppercase");
-  }
-}
+   // using boolean values to confirm what options are selected
+  var isSpecial = confirm("Should your password contain special characters?");
+    
+  var isNumbers = confirm("Should your password contain numbers?");
+    
+  var isLowercase = confirm("Should your password contain lowercase?");
+  
+  var isUppercase = confirm("Should your password contain UPPERCASE?")
+  // making sure at least one character option is selected
+    
+    if(isSpecial){
+    }else if (isNumbers){
+    }else if (isLowercase){
+    }else if (isUppercase){
+    }else { 
+      alert("Please choose at least one of the character options") 
 
-}
+    }
+    // add the choices into the new array
+    if(isSpecial){
+      includedCharacters = includedCharacters.concat(specialCharacters);
+    }
+    if(isNumbers){
+      includedCharacters = includedCharacters.concat(numericCharacters);
+    }
+    if(isLowercase){
+      includedCharacters = includedCharacters.concat(lowerCasedCharacters);
+    }
+    if(isUppercase){
+      includedCharacters = includedCharacters.concat(upperCasedCharacters);
+    }
+  }
+    return includedCharacters;
+  
+};
 getPasswordOptions();
+
 // Function for getting a random element from an array
-function getRandom(arr) {
+function getRandom() {
+  // declare a variable to sore the user password, use a for loop to make sure the length of the password is the one chosen by the user and to get random characters from: special characters, numeric characters, uppercase, lowercase.
+  var userPassword = "";
+  for(var i= 0; i < chooseNumber; i++){
+    userPassword += includedCharacters[Math.floor(Math.random() * includedCharacters.length)]
+  }
+  return userPassword;
 }
 
 // Function to generate password with user input
 function generatePassword() {
-
+var password = getRandom()
+return password;
 }
 
 // Get references to the #generate element
